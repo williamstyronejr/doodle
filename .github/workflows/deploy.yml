@@ -1,0 +1,40 @@
+name: deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request: {}
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+
+      - name: Install dep
+        uses: bahmutov/npm-install@v1
+        with:
+          working-directory: |
+            server
+            client
+            
+      - name: Heroku Deploy
+        #  Only deploy main branch on pushes
+        if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
+        uses: akhileshns/heroku-deploy@v3.12.12
+        env:
+          # Skip husky and cypress install on heroku
+          HD_HUSKY_SKIP_INSTALL: "1"
+          HD_CYPRESS_INSTALL_BINARY: 0
+
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "react-doodle" # Must be unique in Heroku
+          heroku_email: ${{secrets.HEROKU_EMAIL}}

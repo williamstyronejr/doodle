@@ -1,0 +1,33 @@
+{
+  "name": "doodle",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "husky install",
+    "start": "concurrently \"npm start --prefix client\" \"npm start --prefix server\"",
+    "dev": "concurrently \"npm start --prefix client\" \"npm run dev --prefix server\"",
+    "build": "lerna run --concurrency 1 --stream build",
+    "production": "npm run production --prefix server",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "npm ci --prefix client && npm ci --prefix server && npm run build",
+    "precommit": "lerna run --concurrency 1 --stream precommit --since HEAD --exclude-dependents",
+    "prepush": "lerna run --concurrency 1 --stream prepush --since HEAD --exclude-dependents"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/williamstyronejr/doodle.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/williamstyronejr/doodle/issues"
+  },
+  "homepage": "https://github.com/williamstyronejr/doodle#readme",
+  "devDependencies": {
+    "concurrently": "^7.3.0",
+    "lerna": "^5.4.0",
+    "lint-staged": "^13.0.3",
+    "husky": "^8.0.0"
+  }
+}

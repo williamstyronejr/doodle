@@ -10,9 +10,9 @@
     "build": "lerna run --concurrency 1 --stream build",
     "production": "npm run production --prefix server",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "npm ci --prefix client && npm ci --prefix server && npm run build",
     "precommit": "lerna run --concurrency 1 --stream precommit --since HEAD --exclude-dependents",
-    "prepush": "lerna run --concurrency 1 --stream prepush --since HEAD --exclude-dependents"
+    "prepush": "lerna run --concurrency 1 --stream prepush --since HEAD --exclude-dependents",
+    "heroku-postbuild": "npm ci --prefix client --production=false && npm ci --prefix server && npm run build"
   },
   "repository": {
     "type": "git",

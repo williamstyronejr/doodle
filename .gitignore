@@ -1,0 +1,18 @@
+/node_modules
+
+# build
+/dist
+/build
+
+# logs
+/logs
+
+# env
+.env
+
+# MAC
+.DS_Store
+
+# IDE
+.idea
+.vscode

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doodle</title>
+    <link rel="stylesheet" href="/css/index.css" />
+
+    <!-- three.js -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+        }
+      }
+    </script>
+    <script defer src="/js/index.js" type="module"></script>
+  </head>
+
+  <body>
+    <canvas id="canvas"></canvas>
+    <div id="intro">
+      <div class="intro_content">
+        <div class="intro_name">
+          <input id="name" type="text" class="input" placeholder="Enter Name" />
+          <button id="name_submit" class="btn btn-submit" type="button">
+            Submit
+          </button>
+        </div>
+
+        <div class="intro_room">
+          <div>
+            <input type="text" class="input" placeholder="Enter Room ID" />
+            <button class="btn btn-join" type="button">Join</button>
+          </div>
+
+          <div>
+            <button id="create" class="btn btn-create" type="button">
+              Create
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
